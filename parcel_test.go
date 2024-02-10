@@ -50,10 +50,9 @@ func TestParcelStore(t *testing.T) {
 
 				p, err := store.Get(id)
 				require.NoError(t, err)
-				require.Equal(t, parcel.Client, p.Client)
-				require.Equal(t, parcel.Address, p.Address)
-				require.Equal(t, parcel.Status, p.Status)
-				require.Equal(t, parcel.CreatedAt, p.CreatedAt)
+				require.Equal(t, id, p.Number)
+				parcel.Number = id
+				require.Equal(t, parcel, p)
 
 				err = store.Delete(id)
 				require.NoError(t, err)
